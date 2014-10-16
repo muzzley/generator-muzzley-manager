@@ -27,7 +27,7 @@ yo muzzley-manager
 
 When you run the generator it will ask a few questions, to generate custom boilerplate for your project, the following questions will be asked
 
-### <span style='color: firebrick'>*What is the name of the device?*</span>
+### > *What is the name of the device?*
 
 #### Possible answers
 Anything you want
@@ -36,7 +36,7 @@ Anything you want
 - Create a directory with the name of the device, for e.g. if you call it `awesome`, you'll get manager-awesome
 - Write to multiple files (config.js env variables, plugin handlers) the name of your device
 
-### <span style='color: firebrick'>*Do you want to use a third-party module for the provider logic?*</span>
+### > *Do you want to use a third-party module for the provider logic?*
 ##### Note: What generator is asking is if exists any npm module, that already, for e.g., connects to your "thing" cloud, that push some specific action, etc .. 
 
 #### Possible answers
