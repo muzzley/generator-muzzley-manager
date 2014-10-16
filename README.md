@@ -71,6 +71,7 @@ You will get a structure similar to this
 >   - provider_module/
 >   - public/
 >   - test/
+>   - docs/
 >   - index.js
 >   - config.js
 >   - Gruntfile.js
