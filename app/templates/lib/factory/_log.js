@@ -3,7 +3,7 @@
  */
 function Factory() {
   var config = require('config');
-  var Logger = require('manager-framework').helpers.Logger;
+  var Logger = require('muzzley-idk').helpers.Logger;
   
   return Logger(config.bunyan);
 }

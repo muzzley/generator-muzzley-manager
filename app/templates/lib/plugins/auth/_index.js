@@ -1,6 +1,6 @@
 // Dependencies
 var config = require('config');
-var plugins = require('manager-framework').plugins;
+var plugins = require('muzzley-idk').plugins;
 var handlers = require('./handlers');
 
 

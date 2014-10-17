@@ -13,7 +13,7 @@ var MuzzleyManagerGenerator = yeoman.generators.Base.extend({
   end: function () {
     var done = this.async();
   
-    // Install manager-framework and muzzley-client
+    // Install muzzley-idk and muzzley-client
     this.installDependencies({bower : false});
     
     // Install the rest of the dependencies

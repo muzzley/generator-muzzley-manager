@@ -7,7 +7,7 @@
  */
 
 // Dependencies
-var storage = require('manager-framework').helpers.Storage.getDefault();
+var storage = require('muzzley-idk').helpers.Storage.getDefault();
 var keys = require('./keys');
 
 //////////////// Prototype ////////////////////

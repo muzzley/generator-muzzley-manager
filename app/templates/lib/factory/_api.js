@@ -3,7 +3,7 @@
  */
 function Factory() {
   var config = require('config');
-  var Api = require('manager-framework').helpers.Api;
+  var Api = require('muzzley-idk').helpers.Api;
 
   return new Api(config.muzzley.api.credentials.id, config.muzzley.api.credentials.key);
 }
