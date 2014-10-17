@@ -19,6 +19,8 @@ var MuzzleyManagerGenerator = yeoman.generators.Base.extend({
     // Install the rest of the dependencies
     this.npmInstall(
     [
+      'muzzley-idk',
+      'muzzley-client',
       'hapi',
       'boom',
       'joi',

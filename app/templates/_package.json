@@ -6,7 +6,6 @@
     "dev": "MANAGER_{{ uname }}_DEBUG='true' NODE_PATH=. node index.js | bunyan"
   },
   "dependencies": {
-    "manager-framework": "git+ssh://git@bitbucket.org:muzzley/manager-framework.git#development-rbarros",
-    "muzzley-client": "git+ssh://git@bitbucket.org:muzzley/muzzley-sdk-js.git#feature/refactor-reconnect"
+
   }
 }
