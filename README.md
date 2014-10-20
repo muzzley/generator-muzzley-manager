@@ -123,9 +123,7 @@ This are representations of muzzley business logic and the way information shoul
 
 ### Plugins
 
-Plugins are isolated pieces of business logic and reusable utilities used in [hapi](http://hapijs.com/).
-
-Read more about plugins [here](http://hapijs.com/tutorials/plugins)
+Plugins are isolated pieces of business logic and reusable utilities used in [hapi](http://hapijs.com/). Read more about plugins [here](http://hapijs.com/tutorials/plugins).
 
 ### Provider
 
