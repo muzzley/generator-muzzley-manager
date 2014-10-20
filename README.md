@@ -88,7 +88,7 @@ You will get a structure similar to this:
 >   - config.js
 >   - Gruntfile.js
 
-The core dependencies of the generator is the [muzzley-idk]() and [muzzley-client](). If you don't know _**what the hell those are**, we suggest that you read the documentation of both packages.
+The core dependencies of the generator is the [muzzley-idk]() and [muzzley-client](). If you don't know _what the hell those are_, we suggest that you read the documentation of both packages.
 
 The main dependencies that generator installs are the following:
 
