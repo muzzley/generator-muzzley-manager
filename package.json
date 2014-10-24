@@ -4,11 +4,11 @@
   "description": "Yeoman generator for muzzley managers.",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "ricardofbarros/generator-muzzley-manager",
+  "repository": "muzzley/generator-muzzley-manager",
   "author": {
     "name": "Ricardo Barros",
-    "email": "ricardofbarros@hotmail.com",
-    "url": "https://github.com/ricardofbarros"
+    "email": "ricardo.barros@muzzley.com",
+    "url": "https://github.com/muzzley/generator-muzzley-manager"
   },
   "engines": {
     "node": ">=0.10.0"
