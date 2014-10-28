@@ -77,7 +77,7 @@ Provider.prototype.storeAllChannels = function(cb) {
 
 ///////// Interaction with channel ///////////
 
-Provider.prototype.innit = function(channelId, cb) {
+Provider.prototype.init = function(channelId, cb) {
   var self = this;  
 
   // Get subscription to get providerId

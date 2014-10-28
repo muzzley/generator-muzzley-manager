@@ -2,7 +2,7 @@
   "name": "package",
   "version": "0.0.0",
   "scripts": {
-    "start": "NODE_PATH=. node index.js",
+    "prod": "NODE_PATH=. node index.js",
     "dev": "MANAGER_{{ uname }}_DEBUG='true' NODE_PATH=. node index.js | bunyan"
   },
   "dependencies": {

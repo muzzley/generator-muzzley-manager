@@ -32,7 +32,7 @@ muzzley.on('connect', function (activity) {
 
     var provider = new Provider({muzzleyId: user.profileId});
 
-    provider.innit(user.providerDeviceId, function(err) {
+    provider.init(user.providerDeviceId, function(err) {
       if(err) {
         log.error(err);
         return;

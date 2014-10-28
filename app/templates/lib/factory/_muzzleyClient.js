@@ -3,15 +3,14 @@
  */
 function Factory() {
   // Dependencies
-  var config = require('config');
   var Muzzley = require('muzzley-client');
 
-  var muzOptions = {
+  var options = {
    reconnectionAttempts: Infinity, // Never give up trying to reconnect
    reconnectionLimit: 20000        // Retry reconnects at max 20s intervals
   };
 
-  var muzzley = new Muzzley(muzOptions);
+  var muzzley = new Muzzley(options);
 
   return muzzley;
 }

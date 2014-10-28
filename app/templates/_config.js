@@ -5,12 +5,12 @@ var config = {};
  * HTTP server configuration
  */
 config.server = {
-  host: process.env.MANAGER_{{ uname }}_HOST || '',
+  host: 'localhost',
   images: {
     firstPost: '/images/first.jpg',
     posts: []
   },
-  port: process.env.MANAGER_{{ uname }}_PORT || 8080,
+  port: 8080,
   options: {}
 };
 
@@ -19,10 +19,12 @@ config.server = {
  * Logger configuration 
  * see https://github.com/trentm/node-bunyan
  * for more info
+ * 
+ * default level: trace
  */
 config.bunyan = {
   name: require('./package.json').name,
-  level: process.env.MANAGER_{{ uname }}_LOG_LEVEL || 'trace'
+  level: 'trace'
 };
 
 
@@ -31,19 +33,18 @@ config.bunyan = {
  */
 config.muzzley = {
   activity: {
-    token: process.env.MANAGER_{{ uname }}_TOKEN || '',
-    activityId:  process.env.MANAGER_{{ uname }}_ACTIVITY || '',
-    authStrategy: process.env.MANAGER_{{ uname }}_AUTH_STRATEGY || 'internal' 
+    token: '',
+    activityId: ''
   },
-  webview: process.env.MANAGER_{{ uname }}_WEBVIEW_UUID || '',
+  webview: '',
   // You need to contact our support at support@muzzley.com
-  // to get the credentials and the url  
+  // to get the credentials  
   api: {
     credentials : {
-      id: process.env.MANAGER_{{ uname }}_ID || '',
-      key: process.env.MANAGER_{{ uname }}_HAWK_KEY || ''
+      id: '',
+      key: ''
     },
-    url: process.env.MANAGER_{{ uname }}_MUZZLEY_API || ''
+    url: 'https://channels.muzzley.com'
   }
 };
   
