@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "prod": "NODE_PATH=. node index.js",
-    "dev": "MANAGER_{{ uname }}_DEBUG='true' NODE_PATH=. node index.js | bunyan"
+    "dev":  "NODE_PATH=. node index.js | bunyan"
   },
   "dependencies": {
 
