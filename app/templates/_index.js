@@ -35,22 +35,16 @@ async.eachSeries(plugins, function (plugin, cb) {
   // Log stuff
   log.info('Plugins loaded');
   
-  // Connect to muzzley core
-  muzzley.on("connect", function (activity) {
-    // Log stuff
-    log.info({activity: activity.activityId}, 'Muzzley activity started');
+  // Start hapi server
+  server.start(function (err) {
+    if (err) {
+      log.error('Failed to load a plugin', err);
+      return;
+    }
+    log.info('{{ lname|capitalize }} devices manager started @ ' + server.info.uri);
 
-    // Start hapi server
-    server.start(function (err) {
-      if (err) {
-        log.error('Failed to load a plugin', err);
-        return;
-      }
-      log.info('{{ lname|capitalize }} devices manager started @ ' + server.info.uri);
-      
-      if(config.debug) {
-        qrcode.generate('https://www.muzzley.com/play/' + activity.activityId + '.208727');        
-      }
-    });
-  });
+    if(config.debug) {
+      qrcode.generate('https://www.muzzley.com/play/' + activity.activityId + '.208727');        
+    }
+  });  
 });
