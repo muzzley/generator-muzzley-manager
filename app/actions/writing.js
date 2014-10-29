@@ -95,7 +95,7 @@ module.exports = {
 
     // Copy images
     this.src.copy('public/images/channels.jpg', 'public/images/channels.jpg');
-    this.src.copy('public/images/firstpost.jpg', 'public/images/firstpost.jpg');
+    this.src.copy('public/images/first.jpg', 'public/images/first.jpg');
     this.src.copy('public/images/profile.jpg', 'public/images/profile.jpg');
       
     // Write provider wrapper
