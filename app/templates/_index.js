@@ -5,7 +5,6 @@ var plugins = require('lib/plugins');
 var async = require('async');
 var log = require('lib/factory/log')();
 var muzzley = require('lib/interaction');
-var qrcode = require('qrcode-terminal');
 
 log.error('#### Starting {{ lname|capitalize }} Manager ####');
 
@@ -42,9 +41,5 @@ async.eachSeries(plugins, function (plugin, cb) {
       return;
     }
     log.info('{{ lname|capitalize }} devices manager started @ ' + server.info.uri);
-
-    if(config.debug) {
-      qrcode.generate('https://www.muzzley.com/play/' + activity.activityId + '.208727');        
-    }
-  });  
+  });
 });

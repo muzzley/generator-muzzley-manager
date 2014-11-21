@@ -31,8 +31,7 @@ var MuzzleyManagerGenerator = yeoman.generators.Base.extend({
       'grunt-shell',
       'grunt-prompt',
       'grunt-contrib-imagemin',
-      'async',
-      'qrcode-terminal'
+      'async'
     ], 
     { 'save': true }, 
     function() {
