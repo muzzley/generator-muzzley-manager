@@ -6,25 +6,31 @@ var config = {};
  */
 config.server = {
   host: 'localhost',
-  images: {
-    firstPost: '/images/first.jpg',
-    posts: []
-  },
   port: 8080,
   options: {}
 };
 
 
 /**
- * Logger configuration 
+ * Logger configuration
  * see https://github.com/trentm/node-bunyan
  * for more info
- * 
+ *
  * default level: trace
  */
-config.bunyan = {
+config.logger = {
   name: require('./package.json').name,
-  level: 'trace'
+  level: 'debug'
+};
+
+
+/**
+* Redis client connector configuration
+* @type {Object}
+*/
+config.redis = {
+  host: 'localhost',
+  port: 6379
 };
 
 
@@ -32,20 +38,14 @@ config.bunyan = {
  * Muzzley ecosystem configuration
  */
 config.muzzley = {
-  activity: {
-    token: '',
-    activityId: ''
+  app: {
+    profile: '', // Go to https://muzzley.com/developers, create your APP and get this key
+    token: ''  // Go to https://muzzley.com/developers, create your APP and get this key
   },
-  webview: '',
-  // You need to contact our support at support@muzzley.com
-  // to get the credentials  
   api: {
-    credentials : {
-      id: '',
-      key: ''
-    },
-    url: 'https://channels.muzzley.com'
+    credential: '', // Go to https://muzzley.com/developers, create your APP and get this key
+    url: 'http://channels.muzzley.com'
   }
 };
-  
+
 module.exports = config;

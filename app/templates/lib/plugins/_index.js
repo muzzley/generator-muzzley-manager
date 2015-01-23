@@ -1,4 +1,4 @@
-// Plugins
+// Hapi Plugins
 var authPlugin = require('./auth');
 var channelsPlugin = require('./channels');
 var subscriptionsPlugin = require('./subscriptions');
@@ -10,4 +10,3 @@ module.exports = [
   subscriptionsPlugin,
   imagesPlugin
 ];
-

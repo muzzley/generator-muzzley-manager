@@ -1,7 +1,5 @@
 //Dependencies
-{% if localProviderModule %}var providerModule = require('provider_module'); 
-{% elseif providerModule %}var providerModule = require('{{ providerModule }}');
-{% endif -%}
+var providerModule = require('provider_module');
 var Credentials = require('lib/models/Credentials');
 var Channel = require('lib/models/Channel');
 var Subscription = require('lib/models/Subscription');
@@ -10,27 +8,27 @@ var async = require('async');
 
 function Provider(options) {
   options = options || {};
-  
+
   // feel free to add or remove any property
   this.muzzleyId = options.muzzleyId || '';
   this.id = options.providerId || '';
-  this.accessToken = options.accessToken || '';  
+  this.accessToken = options.accessToken || '';
 };
 
 /////////// Adding a new Channel //////////
 
 Provider.prototype.addToken = function(email, password, cb) {
-  var self = this;  
-  
+  var self = this;
+
   providerModule.login(email, password, function(err, user) {
     if(err) return cb(err);
-    
+
     if(user) {
       // Set token
       var credentialObj = {
         muzzleyId: self.muzzleyId,
         providerId: user.id,
-        accessToken: user.token    
+        accessToken: user.token
       };
 
       // Create new credential obj
@@ -40,17 +38,15 @@ Provider.prototype.addToken = function(email, password, cb) {
       credentials.save(function(err) {
         if(err) return cb(err);
 
-        return cb(null, credentialObj);  
+        return cb(null, credentialObj);
       });
     } else {
       return cb();
-    }   
+    }
   });
 };
 
 Provider.prototype.removeToken = function(cb) {
-  var self = this;
-  
   // Log sutff
   log.debug('Removing access token from', this.muzzleyId);
 
@@ -60,16 +56,16 @@ Provider.prototype.removeToken = function(cb) {
 Provider.prototype.storeAllChannels = function(cb) {
   var self = this;
 
-  Credentials.get(this.muzzleyId, this.id, function(err, credentials) {
+  Credentials.get(self.muzzleyId, self.id, function(err, credentials) {
     if(err) return cb(err);
-    
+
     // Check if credentials are empty
     if(!credentials) return cb(new Error('Could not successfully load the credentials'));
-    
-    // Your logic goes here 
-    
+
+    // Your logic goes here
+
     return cb();
-       
+
   });
 };
 
@@ -78,7 +74,7 @@ Provider.prototype.storeAllChannels = function(cb) {
 ///////// Interaction with channel ///////////
 
 Provider.prototype.init = function(channelId, cb) {
-  var self = this;  
+  var self = this;
 
   // Get subscription to get providerId
   Subscription.get(this.muzzleyId, channelId, function(err, sub) {
@@ -105,8 +101,8 @@ Provider.prototype.init = function(channelId, cb) {
 
       return cb(null);
     });
-  });   
-   
+  });
+
 };
 
 

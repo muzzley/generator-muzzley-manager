@@ -1,11 +1,6 @@
-/*
- * Factory to create and return a new Logger Instance
- */
-function Factory() {
-  var config = require('config');
-  var Logger = require('muzzley-idk').helpers.Logger;
-  
-  return Logger(config.bunyan);
-}
+// Dependencies
+var config = require('config');
+var logger = require('muzzley-idk').helpers.Logger;
 
-module.exports = Factory;
+
+module.exports = logger(config.logger);

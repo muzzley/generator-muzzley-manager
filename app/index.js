@@ -1,50 +1,38 @@
 'use strict';
 var yeoman = require('yeoman-generator');
+var path = require('path');
 
 var MuzzleyManagerGenerator = yeoman.generators.Base.extend({
   initializing: function () {
     this.pkg = require('../package.json');
   },
-  
+
   prompting: require('./actions/prompting'),
 
   writing: require('./actions/writing'),
 
   end: function () {
     var done = this.async();
-  
-    // Install muzzley-idk and muzzley-client
-    this.installDependencies({bower : false});
-    
-    // Install the rest of the dependencies
+
+
+    // Install the main dependencies of the manager
     this.npmInstall(
     [
       'muzzley-idk',
       'muzzley-client',
-      'hapi',
+      'hapi@7.5.2',
       'boom',
-      'joi',
-      'request',
-      'lab',
-      'lodash',
-      'grunt',
-      'grunt-shell',
-      'grunt-prompt',
-      'grunt-contrib-imagemin',
       'async'
-    ], 
-    { 'save': true }, 
+    ],
+    { 'save': true },
     function() {
-      if(this.localProviderModule) {
-        done();
-      } else {
-        this.npmInstall(
-        [
-          this.thirdPartyProviderModule
-        ], 
-        { 'save': true }, 
-        done);
-      }
+      // Change to provider_module dir
+      process.chdir(path.join(process.cwd(), 'provider_module'));
+
+      // Install the dependency of provider_module
+      this.npmInstall(['request'], {'save': true}, function() {
+        return done();
+      });
     }.bind(this));
   }
 });

@@ -3,8 +3,10 @@ var Hapi = require('hapi');
 var config = require('config');
 var plugins = require('lib/plugins');
 var async = require('async');
-var log = require('lib/factory/log')();
-var muzzley = require('lib/interaction');
+var log = require('lib/factory/log');
+
+// This will init your manager interaction service
+require('lib/interaction');
 
 log.error('#### Starting {{ lname|capitalize }} Manager ####');
 
@@ -33,7 +35,7 @@ async.eachSeries(plugins, function (plugin, cb) {
   }
   // Log stuff
   log.info('Plugins loaded');
-  
+
   // Start hapi server
   server.start(function (err) {
     if (err) {

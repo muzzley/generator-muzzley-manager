@@ -2,8 +2,9 @@
   "name": "package",
   "version": "0.0.0",
   "scripts": {
-    "prod": "NODE_PATH=. node index.js",
-    "dev":  "NODE_PATH=. node index.js | bunyan"
+    "start": "NODE_PATH=. node index.js",
+    "dev":  "NODE_PATH=. node index.js | bunyan",
+    "mon":  "NODE_PATH=. nodemon index.js | bunyan"
   },
   "dependencies": {
 

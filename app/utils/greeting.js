@@ -1,5 +1,6 @@
 'use strict';
 var chalk = require('chalk');
+var version = require('../../package.json').version;
 
 function returnGreeting() {
   var greeting =
@@ -22,17 +23,18 @@ function returnGreeting() {
   '\n            ' + chalk.red.bold('dhhhhhhs.   `ohhhs.   `+hhhs.    /hhhhhhhhhhhhhd') +
   '\n             ' + chalk.red.bold('hhhhhhhhysyhhhhhhhysshhhhhhhyosyhhhhhhhhhhhhhh') +
   '\n              ' + chalk.red.bold('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh') +
-  '\n               ' + chalk.red.bold('dhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhd') + 
-  '\n                ' + chalk.red.bold('mhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhm') + 
-  '\n                  ' + chalk.red.bold('mhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhm') + 
-  '\n                     ' + chalk.red.bold('dhhhhhhhhhhhhhhhhhhhhhhhhhhhhd') + 
-  '\n                       ' + chalk.red.bold('mdhhhhhhhhhhhhhhhhhhhhhhdm') + 
-  '\n                            ' + chalk.red.bold('mddhhhhhhhhhhddm') + 
+  '\n               ' + chalk.red.bold('dhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhd') +
+  '\n                ' + chalk.red.bold('mhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhm') +
+  '\n                  ' + chalk.red.bold('mhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhm') +
+  '\n                     ' + chalk.red.bold('dhhhhhhhhhhhhhhhhhhhhhhhhhhhhd') +
+  '\n                       ' + chalk.red.bold('mdhhhhhhhhhhhhhhhhhhhhhhdm') +
+  '\n                            ' + chalk.red.bold('mddhhhhhhhhhhddm') +
   '\n'+
   '\n'+
   '\n                       .--------------------------.'+
   '\n                       |    Welcome to Muzzley    |'+
   '\n                       |    Manager generator!    |'+
+  '\n                       |         v'+version+'           |'+
   "\n                       '--------------------------'";
 
   return greeting;
