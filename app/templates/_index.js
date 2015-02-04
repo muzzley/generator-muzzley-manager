@@ -4,6 +4,17 @@ var config = require('config');
 var plugins = require('lib/plugins');
 var async = require('async');
 var log = require('lib/factory/log');
+var storage = require('lib/factory/storage');
+var Model = require('muzzley-idk').helpers.Model;
+
+// Set the prefix of redis data
+// with the manager name
+Model.setPrefix('{{ lname }}');
+
+// Set the default storage of the models
+// with the storage instance from lib/factory
+Model.setStorage(storage);
+
 
 // This will init your manager interaction service
 require('lib/interaction');
@@ -19,8 +30,9 @@ server.ext('onRequest', function (request, next) {
   next();
 });
 
+// Middleware
 server.on('response', function (request) {
-  var obj = { id: request.id , body: request.response.source };
+  var obj = { id: request.id , method: request.method, path: request.path, query: request.query};
   log.debug(obj, '%s', request.response.statusCode);
 });
 
