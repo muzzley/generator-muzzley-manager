@@ -14,13 +14,16 @@ handlers.login = function (request, reply) {
   // Authenticate and add token
   provider.addToken(request.payload.email, request.payload.password, function(err, credentials) {
     if (err) {
-      log.error(err);
-      return reply(Boom.badRequest('an error occurred, please try again later'));
+      if(err.code === 'E_INVALID_CREDENTIALS') {
+        return reply(Boom.badRequest(err.message));
+      }
+
+      return reply(Boom.badRequest('An error occurred, please try again later'));
     }
 
     if(!credentials) {
       log.debug('Login failed for user '+ request.query.user);
-      return reply(Boom.badRequest('Invalid user credentials'));
+      return reply(Boom.badRequest('An error occurred, please try again later'));
     }
 
     log.debug('Credentials', credentials);
@@ -36,7 +39,7 @@ handlers.authorization = function (request, reply) {
   });
 
   // If user didn't allow
-  if (!request.payload || !request.payload.choice || request.payload.choice != 'permit') {
+  if (!request.payload || !request.payload.choice || request.payload.choice !== 'permit') {
     // Log stuff
     log.info('User', request.query.user, 'didn\'t authorize');
 

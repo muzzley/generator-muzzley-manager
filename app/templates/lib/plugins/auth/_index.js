@@ -16,6 +16,8 @@ var plugin = {
         title: '{{ lname|capitalize }}:login',
         subtitle: 'Insert your account details',
         label: 'Sign in',
+        color: 'red',
+        image: config.server.host+'/images/channels.jpg',
         inputs:  {
           'email': { type: 'text',  placeholder: 'Email' },
           'password': { type: 'password', placeholder: 'Password' }
