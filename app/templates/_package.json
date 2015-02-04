@@ -1,10 +1,12 @@
 {
-  "name": "package",
-  "version": "0.0.0",
+  "name": "muzzley-manager-{{ lname }}",
+  "version": "0.0.1",
   "scripts": {
     "start": "NODE_PATH=. node index.js",
     "dev":  "NODE_PATH=. node index.js | bunyan",
-    "mon":  "NODE_PATH=. nodemon index.js | bunyan"
+    "mon":  "NODE_PATH=. nodemon index.js | bunyan",
+    "preinstall": "npm install --prefix ./provider_module/",
+    "preupdate": "npm update --prefix ./provider_module/"
   },
   "dependencies": {
 
