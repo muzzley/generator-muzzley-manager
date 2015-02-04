@@ -7,7 +7,7 @@ var pubsub = require('lib/factory/pubsub');
 
 // Connect client to core
 muzzley.initApp({
-  config.muzzley.app.token
+  token: config.muzzley.app.token
 });
 
 // Event listener, on connect
