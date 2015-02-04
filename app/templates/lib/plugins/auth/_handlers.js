@@ -1,6 +1,6 @@
 // Dependencies
 var config = require('config');
-var log = require('lib/factory/log')();
+var log = require('lib/factory/log');
 var Provider = require('lib/provider');
 var Boom = require('boom');
 

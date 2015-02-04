@@ -1,7 +1,7 @@
 // Dependencies
 var PubSub = require('muzzley-idk').helpers.PubSub;
 var config = require('config.js');
-var muzzley = require('./muzzley');
+var muzzley = require('./muzzleyClient');
 var log = require('./log');
 
 var pubsub = new PubSub({

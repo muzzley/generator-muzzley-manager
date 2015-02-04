@@ -1,7 +1,6 @@
 // Dependecies
 var Hapi = require('hapi');
 var config = require('config');
-var plugins = require('lib/plugins');
 var async = require('async');
 var log = require('lib/factory/log');
 var storage = require('lib/factory/storage');
@@ -15,6 +14,8 @@ Model.setPrefix('{{ lname }}');
 // with the storage instance from lib/factory
 Model.setStorage(storage);
 
+// Load plugins after we set the prefix
+var plugins = require('lib/plugins');
 
 // This will init your manager interaction service
 require('lib/interaction');

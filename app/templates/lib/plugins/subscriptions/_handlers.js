@@ -1,5 +1,5 @@
 // Dependencies
-var log = require('lib/factory/log')();
+var log = require('lib/factory/log');
 var async = require('async');
 var Subscription = require('lib/models/Subscription');
 var Channel = require('lib/models/Channel');

@@ -3,7 +3,7 @@ var providerModule = require('provider_module');
 var Credentials = require('lib/models/Credentials');
 var Channel = require('lib/models/Channel');
 var Subscription = require('lib/models/Subscription');
-var log = require('lib/factory/log')();
+var log = require('lib/factory/log');
 var async = require('async');
 
 function Provider(options) {

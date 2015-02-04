@@ -76,7 +76,6 @@ module.exports = {
     this.src.copy('lib/models/_Channel.js', 'lib/models/Channel.js');
     this.src.copy('lib/models/_Credentials.js', 'lib/models/Credentials.js');
     this.src.copy('lib/models/_Subscription.js', 'lib/models/Subscription.js');
-    this.swig('lib/models/_keys.js', 'lib/models/keys.js');
 
     // Copy images
     this.src.copy('public/images/channels.jpg', 'public/images/channels.jpg');

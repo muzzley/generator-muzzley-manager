@@ -5,10 +5,10 @@ var config = {};
  * HTTP server configuration
  */
 config.server = {
-  host: 'your-manager-domain.com',
+  host: 'https://your-manager-domain.com',
   port: 8080,
   options: {
-    location: 'your-manager-domain.com'
+    location: 'https://your-manager-domain.com'
   }
 };
 
