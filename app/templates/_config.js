@@ -5,9 +5,11 @@ var config = {};
  * HTTP server configuration
  */
 config.server = {
-  host: 'localhost',
+  host: 'your-manager-domain.com',
   port: 8080,
-  options: {}
+  options: {
+    location: 'your-manager-domain.com'
+  }
 };
 
 
@@ -35,7 +37,7 @@ config.redis = {
 
 
 /**
- * Muzzley ecosystem configuration
+ * muzzley ecosystem configuration
  */
 config.muzzley = {
   app: {
