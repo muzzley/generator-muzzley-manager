@@ -21,7 +21,9 @@ Provider.prototype.addToken = function(email, password, cb) {
   var self = this;
 
   providerModule.login(email, password, function(err, user) {
-    if(err) return cb(err);
+    if(err) {
+      return cb(err)
+    }
 
     if(user) {
       // Set token
@@ -36,12 +38,20 @@ Provider.prototype.addToken = function(email, password, cb) {
 
       // Save token
       credentials.save(function(err) {
-        if(err) return cb(err);
+        if(err) {
+          return cb(err);
+        }
 
         return cb(null, credentialObj);
       });
     } else {
-      return cb();
+      // Create new error
+      // with the code E_INVALID_CREDENTAILS
+      // so in plugins/auth/handlers we can
+      // caught this specific error
+      err = new Error('Invalid credentials');
+      err.code = 'E_INVALID_CREDENTIALS';
+      return cb(err);
     }
   });
 };
@@ -50,7 +60,7 @@ Provider.prototype.removeToken = function(cb) {
   // Log sutff
   log.debug('Removing access token from', this.muzzleyId);
 
-  Credentials.drop(this.muzzleyId, this.id, cb);
+  Credentials.del(this.muzzleyId, this.id, cb);
 };
 
 Provider.prototype.storeAllChannels = function(cb) {
@@ -60,12 +70,15 @@ Provider.prototype.storeAllChannels = function(cb) {
     if(err) return cb(err);
 
     // Check if credentials are empty
-    if(!credentials) return cb(new Error('Could not successfully load the credentials'));
+    if(!credentials) {
+      return cb(new Error('Could not successfully load the credentials'));
+    }
 
-    // Your logic goes here
+    // Store single channel logic goes here
+    // Normally using async is the best choice
+    // to handle the array with objects
 
     return cb();
-
   });
 };
 
