@@ -24,9 +24,14 @@ muzzley.on('connect', function (activity) {
       // the incoming message
       var property = payload.property;
       var io = payload.io;
+      var channel = payload.channel;
 
-
-      // The rest of your handling message logic
+      // Init provider lib to interaction "mode"
+      // this will the provider id and the access token
+      // of this channel
+      provider.init(channel, function(err) {
+        // The rest of your handling message logic
+      });
     });
   });
 });
