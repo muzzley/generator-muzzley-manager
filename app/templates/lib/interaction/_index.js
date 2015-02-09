@@ -18,6 +18,14 @@ muzzley.on('connect', function (activity) {
       var payload = message.getPayload();
       var user = message.getUser();
 
+      var provider = new Provider({ muzzleyId: user.profileId });
+
+      // Useful data to handle
+      // the incoming message
+      var property = payload.property;
+      var io = payload.io;
+
+
       // The rest of your handling message logic
     });
   });
