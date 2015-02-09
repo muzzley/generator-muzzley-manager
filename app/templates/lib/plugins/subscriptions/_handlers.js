@@ -12,7 +12,12 @@ routes.subscribe = function (request, reply) {
 
   async.each(request.payload.channels, function (channel, cb) {
 
-    Subscription.get(muzzleyId, channel.id, function(err, subscription) {
+    var subscriptionKey = {
+      muzzleyId: muzzleyId,
+      channelId: channel.id
+    };
+
+    Subscription.get(subscriptionKey, function(err, subscription) {
       if(err) {
         return cb(err);
       }
@@ -32,7 +37,7 @@ routes.subscribe = function (request, reply) {
 
           // Delete the subscription
           // the user requested to
-          Subscription.del(muzzleyId, channel.id, function(err) {
+          Subscription.del(subscriptionKey, function(err) {
             if(err) {
               return cb(err);
             }
@@ -43,7 +48,7 @@ routes.subscribe = function (request, reply) {
             // since no one is subscribed to it, therefore nobody is using
             // this information
             if(subs.length <= 1) {
-              Channel.del(channel.id, function(err) {
+              Channel.del({id: channel.id }, function(err) {
                 return cb(err);
               });
             } else {
