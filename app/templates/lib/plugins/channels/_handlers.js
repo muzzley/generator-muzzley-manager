@@ -20,11 +20,19 @@ handlers.getChannels = function (request, reply) {
     var channels = [];
 
     for(var i in subscriptions) {
-      channels.push({
-        content: subscriptions[i].alias,
-        activity: config.muzzley.activity.activityId+'.'+subscriptions[i].channelId,
-        id: subscriptions[i].channelId
-      });
+      if (subscriptions.hasOwnProperty(i)) {
+        channels.push({
+          content: subscriptions[i].alias,
+          id: subscriptions[i].channelId,
+          components: [
+            {
+              id: 'device1',
+              type: 'device',
+              label: 'Awesome Device'
+            }
+          ]
+        });
+      }
     }
 
     reply(channels);

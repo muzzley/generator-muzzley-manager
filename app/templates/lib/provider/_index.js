@@ -13,7 +13,7 @@ function Provider(options) {
   this.muzzleyId = options.muzzleyId || '';
   this.id = options.providerId || '';
   this.accessToken = options.accessToken || '';
-};
+}
 
 /////////// Adding a new Channel //////////
 
@@ -22,7 +22,7 @@ Provider.prototype.addToken = function(email, password, cb) {
 
   providerModule.login(email, password, function(err, user) {
     if(err) {
-      return cb(err)
+      return cb(err);
     }
 
     if(user) {
@@ -66,12 +66,20 @@ Provider.prototype.removeToken = function(cb) {
 Provider.prototype.storeAllChannels = function(cb) {
   var self = this;
 
-  Credentials.get(self.muzzleyId, self.id, function(err, credentials) {
-    if(err) return cb(err);
+  var credSearchKey = {
+    muzzleyId: this.muzzleyId,
+    providerId: this.id
+  };
+
+  Credentials.get(credSearchKey, function(err, credentials) {
+    if(err) {
+      return cb(err);
+    }
 
     // Check if credentials are empty
     if(!credentials) {
       return cb(new Error('Could not successfully load the credentials'));
+
     }
 
     // Store single channel logic goes here
@@ -89,9 +97,16 @@ Provider.prototype.storeAllChannels = function(cb) {
 Provider.prototype.init = function(channelId, cb) {
   var self = this;
 
+  var searchKey = {
+    muzzleyId: this.muzzleyId,
+    channelId: channelId
+  };
+
   // Get subscription to get providerId
-  Subscription.get(this.muzzleyId, channelId, function(err, sub) {
-    if(err) return cb(err);
+  Subscription.get(searchKey, function(err, sub) {
+    if(err) {
+      return cb(err);
+    }
 
     if(!sub) {
       return cb(new Error('Subscription not found'));
@@ -100,11 +115,14 @@ Provider.prototype.init = function(channelId, cb) {
     // Log stuff
     log.debug('Found subscription', sub);
 
-    // Set id to the scope of the class
+    // Set id to the scope of the class and to searchKey
     self.id = sub.providerId;
+    searchKey.providerId = self.id;
 
-    Credentials.get(self.muzzleyId, self.id, function(err, credential) {
-      if(err) return cb(err);
+    Credentials.get(searchKey, function(err, credential) {
+      if(err) {
+        return cb(err);
+      }
 
       // Log stuff
       log.debug('Found credential', credential);
@@ -115,7 +133,6 @@ Provider.prototype.init = function(channelId, cb) {
       return cb(null);
     });
   });
-
 };
 
 
