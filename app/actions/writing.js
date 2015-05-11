@@ -29,6 +29,7 @@ module.exports = {
     this.swig('_index.js', 'index.js');
     this.swig('_config.js', 'config.js');
     this.swig('_package.json', 'package.json');
+    this.src.copy('_gitignore', '.gitignore');
 
     // Build the app structure
     this.dest.mkdir('public');
