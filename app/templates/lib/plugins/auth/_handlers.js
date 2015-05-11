@@ -4,7 +4,6 @@ var log = require('lib/factory/log');
 var Provider = require('lib/provider');
 var Boom = require('boom');
 
-
 var handlers = {};
 
 handlers.login = function (request, reply) {
@@ -12,17 +11,17 @@ handlers.login = function (request, reply) {
   var provider = new Provider({muzzleyId: request.query.user});
 
   // Authenticate and add token
-  provider.addToken(request.payload.email, request.payload.password, function(err, credentials) {
+  provider.addToken(request.payload.email, request.payload.password, function (err, credentials) {
     if (err) {
-      if(err.code === 'E_INVALID_CREDENTIALS') {
+      if (err.code === 'E_INVALID_CREDENTIALS') {
         return reply(Boom.badRequest(err.message));
       }
 
       return reply(Boom.badRequest('An error occurred, please try again later'));
     }
 
-    if(!credentials) {
-      log.debug('Login failed for user '+ request.query.user);
+    if (!credentials) {
+      log.debug('Login failed for user ' + request.query.user);
       return reply(Boom.badRequest('An error occurred, please try again later'));
     }
 
@@ -32,9 +31,9 @@ handlers.login = function (request, reply) {
 };
 
 handlers.authorization = function (request, reply) {
-
+  // Build provider instance
   var provider = new Provider({
-    muzzleyId : request.query.user,
+    muzzleyId: request.query.user,
     providerId: request.query.providerId
   });
 
@@ -45,26 +44,25 @@ handlers.authorization = function (request, reply) {
 
     // Delete user token
     provider.removeToken(function (err) {
-      if(err) {
+      if (err) {
         log.error(err);
       }
 
       return reply().redirect(config.muzzley.api.url + '/authorization?success=false');
     });
-  }
-  // If user allowed
-  else {
-    // Log stuff
+  } else {
+    // If user allowed
+
     log.info('User', request.query.user, 'authorized');
 
     // Get all devices/channels and stores them
     provider.storeAllChannels(function (err) {
-      if(err) {
+      if (err) {
         log.error(err);
         return reply().redirect(config.muzzley.api.url + '/authorization?success=false');
       }
 
-      return reply().redirect(config.muzzley.api.url + '/authorization?success=true&user=' + request.query.user );
+      return reply().redirect(config.muzzley.api.url + '/authorization?success=true&user=' + request.query.user);
     });
   }
 };
