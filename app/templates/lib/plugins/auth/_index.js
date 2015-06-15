@@ -3,7 +3,6 @@ var config = require('config');
 var plugins = require('muzzley-idk').plugins;
 var handlers = require('./handlers');
 
-
 var plugin = {
 
   plugin: {
@@ -17,9 +16,9 @@ var plugin = {
         subtitle: 'Insert your account details',
         label: 'Sign in',
         color: 'red',
-        image: config.server.host+'/images/channels.jpg',
-        inputs:  {
-          'email': { type: 'text',  placeholder: 'Email' },
+        image: config.server.host + '/images/channels.jpg',
+        inputs: {
+          'email': { type: 'email', placeholder: 'Email' },
           'password': { type: 'password', placeholder: 'Password' }
         },
         config: {
@@ -47,6 +46,5 @@ var plugin = {
     }
   }
 };
-
 
 module.exports = plugin;
